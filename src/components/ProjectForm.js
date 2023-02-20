@@ -54,7 +54,7 @@ const ProjectForm = () => {
         </label>
         <input
           value={title}
-          onChange={(e) => setTitle.target.value}
+          onChange={(e) => setTitle(e.target.value)}
           type="text"
           placeholder="e.g. e-commerce website"
           id="title"
@@ -70,7 +70,7 @@ const ProjectForm = () => {
         </label>
         <input
           value={tech}
-          onChange={(e) => setTech.target.value}
+          onChange={(e) => setTech(e.target.value)}
           type="text"
           placeholder="e.g. AI Redux"
           id="tech"
@@ -86,7 +86,7 @@ const ProjectForm = () => {
         </label>
         <input
           value={budget}
-          onChange={(e) => setBudget.target.value}
+          onChange={(e) => setBudget(e.target.value)}
           type="number"
           placeholder="e.g. 500"
           id="budget"
@@ -102,7 +102,7 @@ const ProjectForm = () => {
         </label>
         <input
           value={duration}
-          onChange={(e) => setDuration.target.value}
+          onChange={(e) => setDuration(e.target.value)}
           type="number"
           placeholder="e.g. 5"
           id="duration"
@@ -118,7 +118,7 @@ const ProjectForm = () => {
         </label>
         <input
           value={manager}
-          onChange={(e) => setManager.target.value}
+          onChange={(e) => setManager(e.target.value)}
           type="text"
           placeholder="e.g. Hasnain"
           id="manager"
@@ -134,7 +134,7 @@ const ProjectForm = () => {
         </label>
         <input
           value={dev}
-          onChange={(e) => setDev.target.value}
+          onChange={(e) => setDev(e.target.value)}
           type="number"
           placeholder="e.g. 5"
           id="developer"
@@ -148,6 +148,11 @@ const ProjectForm = () => {
       >
         Add project
       </button>
+      {error && (
+        <p className="bg-rose-500/20 rounded-lg p-5 text-rose-500 border border-rose-500">
+          {error}
+        </p>
+      )}
     </form>
   );
 };
