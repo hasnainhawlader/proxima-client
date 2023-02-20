@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const ProjectForm = () => {
   const [title, setTitle] = useState("");
@@ -25,6 +26,17 @@ const ProjectForm = () => {
     // !res.ok set error
     if (!res.ok) {
       setError(json.error);
+
+      toast.error(`${error}`, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "red",
+      });
     }
 
     // req.ok reset
@@ -37,7 +49,16 @@ const ProjectForm = () => {
       setMenager("");
       setDev("");
       setError("");
-      console.log("project added", json);
+      toast.success("well done", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
   };
 
@@ -149,11 +170,6 @@ const ProjectForm = () => {
       >
         Add project
       </button>
-      {error && (
-        <p className="bg-rose-500/20 rounded-lg p-5 text-rose-500 border border-rose-500">
-          {error}
-        </p>
-      )}
     </form>
   );
 };
