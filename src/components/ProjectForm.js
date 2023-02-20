@@ -10,6 +10,7 @@ const ProjectForm = () => {
   const [menager, setMenager] = useState("");
   const [dev, setDev] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const { dispatch } = useProjectsContext();
 
@@ -29,6 +30,7 @@ const ProjectForm = () => {
     // !res.ok set error
     if (!res.ok) {
       setError(json.error);
+      setEmptyFields(json.error);
 
       toast.error(`${error}`, {
         position: "top-right",
@@ -88,7 +90,7 @@ const ProjectForm = () => {
           type="text"
           placeholder="e.g. e-commerce website"
           id="title"
-          className="bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 "
+          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400  `}
         />
       </div>
       <div className="form-control flex flex-col gap-2">
