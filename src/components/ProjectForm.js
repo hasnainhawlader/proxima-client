@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useProjectsContext } from "../hooks/useProjectsContext";
 
 const ProjectForm = () => {
   const [title, setTitle] = useState("");
@@ -10,16 +11,18 @@ const ProjectForm = () => {
   const [dev, setDev] = useState("");
   const [error, setError] = useState(null);
 
+  const { dispatch } = useProjectsContext();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     //data
-    const project = { title, tech, budget, duration, menager, dev };
+    const projectObj = { title, tech, budget, duration, menager, dev };
     const res = await fetch("http://localhost:4000/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(project),
+      body: JSON.stringify(projectObj),
     });
     const json = await res.json();
 
@@ -49,6 +52,11 @@ const ProjectForm = () => {
       setMenager("");
       setDev("");
       setError("");
+
+      // real time update
+
+      dispatch({ type: "CREATE_PROJECT", payload: json });
+
       toast.success("well done", {
         position: "top-right",
         autoClose: 5000,
