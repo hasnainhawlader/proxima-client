@@ -5,13 +5,14 @@ const ProjectForm = () => {
   const [tech, setTech] = useState("");
   const [budget, setBudget] = useState("");
   const [duration, setDuration] = useState("");
-  const [manager, setManager] = useState("");
+  const [menager, setMenager] = useState("");
   const [dev, setDev] = useState("");
   const [error, setError] = useState(null);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     //data
-    const project = { title, tech, budget, duration, manager, dev };
+    const project = { title, tech, budget, duration, menager, dev };
     const res = await fetch("http://localhost:4000/api/projects", {
       method: "POST",
       headers: {
@@ -29,13 +30,13 @@ const ProjectForm = () => {
     // req.ok reset
 
     if (res.ok) {
-      setTitle(""),
-        setTech(""),
-        setBudget(""),
-        setDuration(""),
-        setManager(""),
-        setDev(""),
-        setError("");
+      setTitle("");
+      setTech("");
+      setBudget("");
+      setDuration("");
+      setMenager("");
+      setDev("");
+      setError("");
       console.log("project added", json);
     }
   };
@@ -117,8 +118,8 @@ const ProjectForm = () => {
           Manager name
         </label>
         <input
-          value={manager}
-          onChange={(e) => setManager(e.target.value)}
+          value={menager}
+          onChange={(e) => setMenager(e.target.value)}
           type="text"
           placeholder="e.g. Hasnain"
           id="manager"
