@@ -29,10 +29,13 @@ const ProjectForm = () => {
 
     // !res.ok set error
     if (!res.ok) {
-      setError(json.error);
-      setEmptyFields(json.error);
+      if (!res.ok) {
+        setError(json.error);
+        setEmptyFields(json.emptyFields);
+      }
+      console.log(emptyFields);
 
-      toast.error(`${error}`, {
+      toast.error(`something went wrong`, {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -54,6 +57,7 @@ const ProjectForm = () => {
       setManager("");
       setDev("");
       setError("");
+      setEmptyFields([]);
 
       // real time update
 
@@ -90,7 +94,12 @@ const ProjectForm = () => {
           type="text"
           placeholder="e.g. e-commerce website"
           id="title"
-          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400  `}
+          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 
+          ${
+            emptyFields.includes("title")
+              ? "border-rose-500"
+              : "border-slate-500"
+          }`}
         />
       </div>
       <div className="form-control flex flex-col gap-2">
@@ -106,7 +115,12 @@ const ProjectForm = () => {
           type="text"
           placeholder="e.g. AI Redux"
           id="tech"
-          className="bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400"
+          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 
+          ${
+            emptyFields.includes("tech")
+              ? "border-rose-500"
+              : "border-slate-500"
+          }`}
         />
       </div>
       <div className="form-control flex flex-col gap-2">
@@ -122,7 +136,12 @@ const ProjectForm = () => {
           type="number"
           placeholder="e.g. 500"
           id="budget"
-          className="bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 "
+          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 
+          ${
+            emptyFields.includes("budget")
+              ? "border-rose-500"
+              : "border-slate-500"
+          }`}
         />
       </div>
       <div className="form-control flex flex-col gap-2">
@@ -138,7 +157,12 @@ const ProjectForm = () => {
           type="number"
           placeholder="e.g. 5"
           id="duration"
-          className="bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 "
+          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 
+          ${
+            emptyFields.includes("duration")
+              ? "border-rose-500"
+              : "border-slate-500"
+          }`}
         />
       </div>
       <div className="form-control flex flex-col gap-2">
@@ -154,7 +178,12 @@ const ProjectForm = () => {
           type="text"
           placeholder="e.g. Hasnain"
           id="manager"
-          className="bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 "
+          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 
+          ${
+            emptyFields.includes("manager")
+              ? "border-rose-500"
+              : "border-slate-500"
+          }`}
         />
       </div>
       <div className="form-control flex flex-col gap-2">
@@ -170,7 +199,10 @@ const ProjectForm = () => {
           type="number"
           placeholder="e.g. 5"
           id="developer"
-          className="bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 "
+          className={`bg-transparent border border-slate-500 py-3 px-5 rounded-lg outline-none focus:border-sky-400 
+          ${
+            emptyFields.includes("dev") ? "border-rose-500" : "border-slate-500"
+          }`}
         />
       </div>
 
