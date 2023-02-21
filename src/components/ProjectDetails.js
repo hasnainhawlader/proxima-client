@@ -34,7 +34,7 @@ const ProjectDetails = ({ project }) => {
           <span>Update on : {new Date(project.updatedAt).toDateString()}</span>
         </div>
         <div className="right flex flex-col">
-          <span> Manager : {project.menager}</span>
+          <span> Manager : {project.manager}</span>
           <span>
             {" "}
             Duration :{" "}

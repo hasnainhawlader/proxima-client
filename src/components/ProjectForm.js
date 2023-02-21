@@ -7,7 +7,7 @@ const ProjectForm = () => {
   const [tech, setTech] = useState("");
   const [budget, setBudget] = useState("");
   const [duration, setDuration] = useState("");
-  const [menager, setMenager] = useState("");
+  const [manager, setManager] = useState("");
   const [dev, setDev] = useState("");
   const [error, setError] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
@@ -17,7 +17,7 @@ const ProjectForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     //data
-    const projectObj = { title, tech, budget, duration, menager, dev };
+    const projectObj = { title, tech, budget, duration, manager, dev };
     const res = await fetch("http://localhost:4000/api/projects", {
       method: "POST",
       headers: {
@@ -51,7 +51,7 @@ const ProjectForm = () => {
       setTech("");
       setBudget("");
       setDuration("");
-      setMenager("");
+      setManager("");
       setDev("");
       setError("");
 
@@ -149,8 +149,8 @@ const ProjectForm = () => {
           Manager name
         </label>
         <input
-          value={menager}
-          onChange={(e) => setMenager(e.target.value)}
+          value={manager}
+          onChange={(e) => setManager(e.target.value)}
           type="text"
           placeholder="e.g. Hasnain"
           id="manager"
