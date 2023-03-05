@@ -40,5 +40,17 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.6"
-  }
+  },
+  "main": "tailwind.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasnainhawlader/proxima-client.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hasnainhawlader/proxima-client/issues"
+  },
+  "homepage": "https://github.com/hasnainhawlader/proxima-client#readme",
+  "description": ""
 }
