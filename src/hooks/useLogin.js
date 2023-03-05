@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
-export const useSignup = () => {
+export const useLogin = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     setLoading(true);
     setError(null);
 
     const res = await fetch(
-      `${process.env.REACT_APP_BASE_URL}/api/user/signup`,
+      `${process.env.REACT_APP_BASE_URL}/api/user/login`,
       {
         method: "POST",
         headers: {
@@ -41,5 +41,5 @@ export const useSignup = () => {
     }
   };
 
-  return { signup, error, loading };
+  return { login, error, loading };
 };
